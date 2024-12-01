@@ -9,14 +9,12 @@ def main():
 
 def get_character_count(text):
     char_count = {}
-    text = text.lower()
     for char in text:
-        try:
-            char_count[char] += 1
-        except KeyError as e:
-            char_count[char] = 1
-        except Exception as e:
-            print(f"Error: {e}")
+        c = char.lower()
+        if c in char_count:
+            char_count[c] += 1
+        else:
+            char_count[c] = 1
     return char_count
 
 
