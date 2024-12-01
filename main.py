@@ -1,5 +1,7 @@
-def main():
-    book_path = "books/frankenstein.txt"
+import argparse
+
+def main(book_filename):
+    book_path = f"books/{book_filename}"
     text_content = get_text_from_path(book_path)
     word_count = get_word_count(text_content)
     char_count = get_character_count(text_content)
@@ -42,5 +44,8 @@ def get_text_from_path(path):
     with open(path) as f:
         return f.read()
 
-
-main()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description = 'Set your book filename')
+    parser.add_argument('book_filename', help='enter the book filename in /books directory')
+    args = parser.parse_args()
+    main(args.book_filename)
